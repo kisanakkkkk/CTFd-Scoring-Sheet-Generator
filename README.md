@@ -3,6 +3,8 @@
 
 Automatic CTFd Scoring Sheet Generator Written in Python 
 
+<img width="892" alt="Screenshot 2023-08-19 234625" src="https://github.com/kisanakkkkk/CTFd-Scoring-Sheet-Generator/assets/70153248/abb87192-5834-4f78-a16b-f44d4f1618d2">
+
 ## Installation
   - #### **Install Python 3.8**
     - [Python 3.8](https://www.python.org/downloads/)
@@ -16,6 +18,9 @@ cd ./CTFd-Scoring-Sheet-Generator
 pip3 install -r requirements.txt
 python3 generator.py -d {user_data} -s {scoreboard_data} -c {chall_data}
 ```
+<img width="683" alt="Screenshot 2023-08-19 234424" src="https://github.com/kisanakkkkk/CTFd-Scoring-Sheet-Generator/assets/70153248/593127d7-6b0e-42b2-ad91-9d59a6bc8e35">
+
+
 ## Basic Usage
 1. Export the following files from your CTFd (https://docs.ctfd.io/docs/exports/ctfd-exports):
    * `{CTFNAME}-users+fields.csv` (for individual-based CTF)
