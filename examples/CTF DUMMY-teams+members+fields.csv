@@ -1,0 +1,19 @@
+id,oauth_id,name,email,password,secret,website,affiliation,country,bracket,hidden,banned,captain_id,created,member_id,member_oauth_id,member_name,member_password,member_email,member_type,member_secret,member_website,member_affiliation,member_country,member_bracket,member_hidden,member_banned,member_verified,member_team_id,member_created
+23,,teama,kos@gmail.com,"$bcrypt-sha256$v=2,t=2b,r=12$abc.$dummy.pHMUhfPUXw4SxLCK",,,IT,ID,,False,False,20,2022-08-27 11:03:51
+,,,,,,,,,,,,,,20,,kos,"$bcrypt-sha256$v=2,t=2b,r=12$abc.$dummy",kos@gmail.com,user,,,,,,False,False,False,23,2022-09-04 00:45:49
+,,,,,,,,,,,,,,44,,nyx,"$bcrypt-sha256$v=2,t=2b,r=12$abc$OuCsa.dummy.nJ2lqvi",dim@gmail.com,user,,,,,,False,False,False,23,2022-09-09 07:57:58
+,,,,,,,,,,,,,,52,,Li,"$bcrypt-sha256$v=2,t=2b,r=12$abc$dummy",lin@gmail.com,user,,,,,,False,False,False,23,2022-09-10 02:00:05
+25,,teamb,rafipriatnak@gmail.com,"$bcrypt-sha256$v=2,t=2b,r=12$abc/rYBVW2xOu$dummy.hu/h/lRQZaN1q7G",,,Un,ID,,False,False,10,2022-08-27 11:04:36
+,,,,,,,,,,,,,,10,,Aku,"$bcrypt-sha256$v=2,t=2b,r=12$abc$66X.dummy/THOVY7gSUbB7Bxu",mid@gmail.com,user,,,,,,False,False,False,25,2022-09-02 06:23:26
+,,,,,,,,,,,,,,18,,bes,"$bcrypt-sha256$v=2,t=2b,r=12$abc/adlmZAO$dummy.k65svyNtQ33.aNWEq",udi@gmail.com,user,,,,,,False,False,False,25,2022-09-02 13:12:28
+,,,,,,,,,,,,,,23,,Raf,"$bcrypt-sha256$v=2,t=2b,r=12$abc.i3hszNH9BOzQ.roVre$dummy.",tak@gmail.com,user,,,,,,False,False,False,25,2022-09-05 08:56:17
+28,,teamc,m.ju@gmail.com,"$bcrypt-sha256$v=2,t=2b,r=12$abc$dummy",,,IP,ID,,False,False,19,2022-08-27 11:05:18
+,,,,,,,,,,,,,,19,,jed,"$bcrypt-sha256$v=2,t=2b,r=12$abc/dummy$/7vnUpWSPlnldfZFHCs9njggEPhHoaa",m.ju@gmail.com,user,,,,,,False,False,False,28,2022-09-02 16:50:30
+,,,,,,,,,,,,,,25,,pat,"$bcrypt-sha256$v=2,t=2b,r=12$abc./lBSxae$dummy",pat@gmail.com,user,,,,,,False,False,False,28,2022-09-05 15:36:11
+,,,,,,,,,,,,,,43,,ara,"$bcrypt-sha256$v=2,t=2b,r=12$abc.$dummy",arr@gmail.com,user,,,,,,False,False,False,28,2022-09-09 07:56:15
+32,,teamd,nov@gmail.com,"$bcrypt-sha256$v=2,t=2b,r=12$abc$dummy/00NGYhk4/st3c5.v7Mu",,,Uni,ID,,False,False,34,2022-08-27 11:07:00
+,,,,,,,,,,,,,,33,,Nam,"$bcrypt-sha256$v=2,t=2b,r=12$r/abc.$dummy",adh@gmail.com,user,,,,,,False,False,False,32,2022-09-09 02:20:33
+,,,,,,,,,,,,,,34,,yes,"$bcrypt-sha256$v=2,t=2b,r=12$N.abc/LDkpfaMIe$dummy/ZCuSVam",nov@gmail.com,user,,,,,,False,False,False,32,2022-09-09 02:27:34
+,,,,,,,,,,,,,,53,,inl,"$bcrypt-sha256$v=2,t=2b,r=12$zpnQ/abc$dummy.CtLfRK",qol@gmail.com,user,,,,,,False,False,False,32,2022-09-10 03:13:03
+41,,admin,,"$bcrypt-sha256$v=2,t=2b,r=12$abc$BCqr7A3./9.E8ubCivQecLCsEKyA/gK",,,,,,True,False,,2022-09-08 06:26:36
+,,,,,,,,,,,,,,3,,ifest22ctf,"$bcrypt-sha256$v=2,t=2b,r=12$abc$kWjEqN.dummy",rih@gmail.com,admin,,,,,,True,False,False,41,2022-08-27 10:59:56

@@ -1,0 +1,298 @@
+id,name,description,connection_info,next_id,max_attempts,value,category,type,state,requirements
+2,Help Maxine,"Tolong bantu mbak Maxine untuk mendapatkan lagu favoritnya kembali ya!!
+
+*friendly reminder: semua file yang ada di folder **so_strange** akan dihantui oleh mas Vecna.
+
+Author: BlackBear!!#7019",,,0,364,Reverse Engineering,dynamic,visible,
+3,Kisinik Kripti Algoritem,"Kisinik adalah murid yang mencintai kriptografi. Ia mencoba untuk membuat sebuah algoritma dengan memodifikasi ***tabula recta*** untuk menyimpan rahasia miliknya. Tolong bantu Bilekber untuk mendapatkan rahasia milik Kisinik!
+
+chall: **nc x.x.x.x 9989**
+
+alternative : **nc x.x.x.x 9989** 
+
+Author: BlackBear!!#7019",x.x.x.x 9989,,0,223,Cryptography,dynamic,visible,
+4,Kata Pengantar,"Kalian bersemangat untuk ikut CTF?
+
+Aku Harap Kalian memiliki semangat yang membara-bara!
+
+Author: San#7802",,,20,100,Cryptography,dynamic,visible,
+5,Hiding In The Queue,"Kamu pikir kamu cukup ""tak terlihat""?
+
+Cobalah menyusup ke antrian ini!
+
+**nc  x.x.x.x:4375**
+
+Author: San#7802",x.x.x.x:4375,,20,364,Binary Exploitation,dynamic,visible,
+6,Count the Flag,"Mikael sedang mencari flag miliknya, tetapi ia kesulitan dalam menemukannya sehingga ia terjebak di suatu tempat (kesesat mulu sih). Bisakah kalian dapatkan flag miliknya? Untuk isi flagnya misal flagnya berisi helloworld maka yang ditulis dalam jawaban yaitu CTF{helloworld}.	
+
+
+Author: Lawson #3021",,,20,400,Reverse Engineering,dynamic,visible,
+7,MaskManGem,"Suatu hari Masman dan istrinya sedang berjalan-jalan di taman. Saat di tengah perjalanan, istri Masman ingin pergi ke toilet dan istrinya meminta Masman untuk menunggunya. Tetapi, Masman melihat banyak orang yang tidak memakai masker. Jadi ia berinisiatif membagikan masker ke orang-orang disekitarnya. Akankah Masman dapat bertemu dengan istrinya dengan selamat? Tali Takdir dari hidup Masman ada di tanganmu. Jangan lupa, MaskManGem dibuat dengan cinta oleh babang **piton** jam **3.8.9**. 
+
+**P.S. Cannot play MaskMan? It's not a problem. Just break into it!**
+
+Chall: ...
+Author:Eri#6413",,,0,500,Reverse Engineering,dynamic,visible,
+8,Riil Kh?,"Terdapat perlombaan CTF yang dimana beberapa perusahaan akan menjadi pesertanya. Akan tetapi terdapat desas desus yang berkata bahwa perusahaan A dan perusahaan B melakukan kecurangan. Untungnya panitia lomba telah menaruh monitoring tools seperti wireshark agar mencegah terjadinya kecurangan seperti itu dan kamu sebagai forensicator diminta untuk menganalisa. Nampaknya pc A telah mengirim suatu email kepada seseorang, apakah kamu bisa melihat isi email tersebut?
+
+Note: flag terpisah menjadi 2 bagian
+
+Format flag: CTF{.*}
+
+Chall: ..
+
+Author: mxl#4046",,,0,364,Forensic,dynamic,visible,
+9,Forest Fire,"Kebakaran hutan terjadi di mana-mana. Orang utan jadi kehilangan tempat tinggal. Kita tidak bisa membiarkan orang utan punah. Aku dan temanku mencoba membuat website donasi untuk menggalang dana demi membangun tempat tinggal baru bagi orang utan. 
+
+**x.x.x.x:17793**
+
+Mirror1: x.x.x.x:17793<br>
+Mirror2: x.x.x.x:17793<br>
+Mirror3: x.x.x.x:17793<br>
+
+**Note: Bila soal down atau mengalami kendala, silahkan coba kerjakan di mirrornya yaa**
+
+Author: Sha#1668",,,0,498,Web Exploitation,dynamic,visible,
+11,Memory Gone,"Lulus sedang melakukan penelitian baru mengenai eksfiltrasi data ketika seseorang tengah mengetikkan sesuatu di dalam aplikasi note-taking. Penelitian tersebut dinamakan ""*Silent Logger*"". 
+
+Tujuan dari penelitian ini adalah untuk memudahkan ahli forensik dalam mengekstrak artifak sensitif seperti nomor HP, nomor kartu kredit yang kemungkinan diketik oleh user setiap waktunya di dunia maya ataupun di tempat yang mereka kira aman.
+
+Penelitian ini membutuhkan mereka untuk melakukan dumping memory dari OS yang berjalan dan Anda diminta untuk mencari *password* yang diketik dari mereka.Untuk memudahkan pencarian, mereka mengetikkan sebuah *password* yang **terpotong** menjadi 5 bagian dalam **SATU** aplikasi built-in di OS, dan mereka **SENGAJA TIDAK MENYIMPAN** filenya agar kamu tidak bisa seenaknya melakukan file dumping. Password tersebut dipisahkan oleh **4 newline (\n)**.
+Formatnya seperti berikut:
+```
+kis
+nau
+_st
+kos
+sl0
+```
+
+Namun untuk membuat challenge ini lebih menantang, password akan berupa format **alfanumerik dengan simbol random** yang tentunya terbaca. Dapatkah kamu menemukan 5 potongan password tersebut? Jika sudah, gabungkan kelima password tersebut. Sebagai contoh jika mengikuti format di atas, maka passwordnya adalah **kisnaufalnop_stnaivekosongbl0ngsl0ck**.
+
+Lalu hitung nilai MD5nya!
+Contoh:
+`echo -n ""kisnaufalnop_stnaivekosongbl0ngsl0ck"" | md5sum`
+
+Format Flag: `CTF{nilai_hash_MD5_nya}`
+
+Link Download Soal: ..
+Password: ..
+
+
+Author: ase#2055",,,0,500,Forensic,dynamic,visible,
+12,Kepapasan,"Jamet dan Mamang merupakan 2 ilmuwan yang hendak membuat sebuah metode enkripsi yang aman dan nyaman. Mereka memutuskan untuk membuat sebuah mekanisme dimana pesan akan dienkripsi 2 kali dengan kunci yang berbeda. Mereka janji akan memberikan flagnya apabila ada jenius yang dapat memecahkan mekanisme tersebut. Apakah kamu salah satunya?
+
+nc x.x.x.x 9977
+
+Author: kis#5303
+",nc x.x.x.x 9977,,0,431,Cryptography,dynamic,visible,
+14,Rabun Genap,"Kata mama eksponen saya ga boleh genap.
+
+Author: kis#5303",,,0,431,Cryptography,dynamic,visible,
+15,5P Authenticator,"Pada suatu hari yang cerah, Budi merancang sebuah program autentikator sederhana untuk menyimpan datanya, saking sederhananya, program ini hanya menerima **5 password** berupa **angka [0-9]**. Setiap password berisi 10 digit angka dengan batasan angka **minimal 1000000000 dan maksimal 9999999999**. Apabila kalian dapat membobol sistem authenticatornya, Budi jamin 99% kalian akan memperoleh flagnya :)
+
+Link program:
+..
+Password  Zip: CTF
+
+Author : Pla#1308",,,0,500,Reverse Engineering,dynamic,visible,
+16,Polyvalidator,"Dekompilasi program sudah menjadi hal yang lumrah di kalangan *Reverse Engineers*. Tapi pernahkah kamu mendekompilasi sebuah program yang tidak biasa? Tools favorit kamu bisa saja tidak mendeteksi algoritma yang bekerja di dalamnya ~
+
+Dapatkah kamu menemukan input yang tepat untuk binary ini?
+
+Author: ase#2055",,,0,500,Reverse Engineering,dynamic,hidden,
+17,Next Stop,"Hari itu, Nicholas berencana untuk bepergian keliling kota bersama dengan Angelina. Sayangnya, Angelina lupa bahwa tempat yang harusnya ia tuju bukanlah di foto ini melainkan tempat lain. Karena Angelina tidak tahu menahu mengenai lokasi dimana dia sekarang karena faktor gagap teknologi, akhirnya ia mengambil foto tempat ia berada sekarang pada Nicholas. Dapatkah kamu menemukan dimana Angelina berada supaya bisa dijemput Nicholas?
+
+Download fotonya disini:
+..
+
+Format Flag: `CTF{NAMA_TEMPAT}`
+
+Contoh: `CTF{STASIUN_JAKARTA_KOTA}`
+
+Catatan: **Jika ada nomor pada tempat tersebut, hiraukan saja**. Misalkan yang kalian temukan adalah Stasiun Jakarta Kota No.16 Cimpaeun, maka jawabannya adalah **STASIUN_JAKARTA_KOTA** (huruf kapital semua). **Tidak perlu pakai nama kendaraannya juga.**
+
+Author: ase#2055",,,0,100,Misc,dynamic,visible,
+18,sith_force,"Pasukan jedi yang telah gugur memberikan kami informasi ini sebelum hilang dan gugur:
+ `#CONFIG_KALLSYMS_ALL is not set`
+ 
+ files: `..`
+
+ main connection: `nc x.x.x.x 13377`
+
+ backup connection(kalo misal diatas gabisa diakses): `nc x.x.x.x 13377`
+
+ **author: 0x#2020**
+",,,0,500,Binary Exploitation,dynamic,visible,
+19,E ilang E ilang,"Jamet: oi liat e ga?
+<br>
+Mamang: e apaan??
+<br>
+Jamet: itu lho e... masa gatau
+<br>
+Mamang: yang kayak gimana bro
+<br>
+Jamet: yang di bawah 65537
+<br>
+Mamang: gatau bro... adanya phi nih
+
+Author: kis#5303",,,0,500,Cryptography,dynamic,hidden,
+24,For Me,"Ini gampang
+
+x.x.x.x:11100
+
+Author: Enryu#7942
+
+..",,,0,500,Binary Exploitation,dynamic,visible,
+25,YuEF,"Anda merupakan seorang kasir di E-Farm, jangan lupa untuk tinggalkan pribadi untuk customer.
+
+**nc x.x.x.x 7147**
+
+Author: Kon#0571",,,0,431,Binary Exploitation,dynamic,visible,
+26,Penjara,"Tinggal sat set sat set.
+
+**nc x.x.x.x 7417**
+
+Author: Kon#0571",,,0,456,Misc,dynamic,visible,
+27,gotta go fast they said,"Kata mama, kita harus jadi orang yang sigap.
+
+Jangan lupa masukkan flagnya dalam format **CTF{.\*}**
+
+**https://docs.google.com/spreadsheets/d/1lpx19PtWydU7kYRl7w6aWsVsKMcYvUMOANE3jvctY9I/edit?usp=sharing**
+
+Author: Kon#0571",,,20,500,Misc,dynamic,hidden,
+28,Ice Cold,"Tommy slebew sebagai seorang ketua dari sebuah grup bapak-bapak yang sangat keren ingin memastikan bahwa kemampuan anggota kelompoknya sudah di atas rata-rata. Oleh karena itu, ia menugaskan bawahannya yaitu mamang Garok untuk membuat sebuah bot untuk menguji kemampuan anggota grup tersebut. Mamang Garok merupakan pecinta ular sehingga ia menggunakan bahasa ular untuk membuat bot ini. Ia menamai bot nya dengan nama ""slebew bot#6760"". Ia juga menyimpan sebuah flag pada bot ini, cobalah dapatkan flag tersebut!
+
+Author: maskirovka#5610",,,0,275,Misc,dynamic,visible,
+29,The Great Frame,"Sebuah startup baru bernama The Great Frame baru saja diluncurkan, mereka mencoba untuk mencari poem terbaik dari yang terbaik, namun dari rumor rumor yang beredar,si admin mereka masih harus membaca poem nya satu persatu, akan tetapi ada rumor juga bahwa website startup ini dibuat dengan security in mind, tunjukan seberapa secure sih The Great Frame ini
+
+**x.x.x.x:29384** <br>
+Mirror1: thegreatframe2.user.cloudjkt01.com:29384 <br>
+
+Author: mit#0012",,,0,500,Web Exploitation,dynamic,visible,
+30,Syntek Hospital's Evidence (Part 1),"<<>> Pesan Baru ::: Dari SynTek Hospital
+
+Permisi, kepada pihak Blue Team sekalian.
+Perkenalkan, saya Steven selaku programmer di perusahaan SynTek Hospital.
+Berikut keluhan saya...
+
+""Belum lama ini, saya mengalami suatu insiden yang menyebabkan seluruh data-data pasien dalam komputer saya menjadi hilang.
+Disamping itu, saya juga mencurigai satu hal terhadap aplikasi programming yang sering saya gunakan, berhubung saya juga seorang Programmer.
+Sebelum insiden ini terjadi, icon pada aplikasi coding saya masih memunculkan gambar.
+Namun keesokan harinya, saya melihat bahwa iconnya tidak muncul dan hanya muncul icon file .exe biasa dari Windows *by-default*. 
+Karena saya berpikir bahwa masalah ""icon yang tidak muncul"" hanyalah kejadian biasa, maka saya execute saja aplikasi coding itu seperti biasa. 
+Tetapi yang terjadi adalah setelah beberapa kali meng-klik file coding tersebut, tidak muncul apa-apa pada layar dan hanya icon loading biru pada kursor.
+
+Nah, dari sini saya tidak mengetahui apapun yang terjadi hingga pada beberapa hari yang lalu, tiba-tiba semua file data pasien dalam komputer saya menjadi hilang.
+
+Terkait hal ini, mohon kepada pihak Blue Team untuk memeriksa komputer saya.
+Terima kasih.""
+
+Best regards,
+Steven.
+
+```
+Tugas anda :
+1. Apa nama dari file yang dicurigai Steven?
+2. Temukan IP Address dari hacker
+3. Temukan Port dari hacker
+
+Syntax flag:
+CTF{namafileyangdicurigai_IP-Address_Port}
+
+CONTOH FLAG:
+CTF{unpa.txt_127.0.0.1_8998}
+```
+Challenge File :
+<br>..
+
+
+Zip Password : ..
+
+Author : Byt#9671",,,0,456,Forensic,dynamic,visible,
+31,Syntek Hospital's Evidence (Part 2),"```
+Deskripsi soal sama dengan Part 1
+```
+
+
+```
+Tugas anda :
+
+(1) Diambil dari hasil dump memory, kapan pertama kali Code.exe ter-eksekusi?
+(Format Jawaban = mm/dd/yyyy-hour:minute:sec = 01/31/2022-24:59:59)
+
+(2) Ada terdapat 2 file record pasien pada komputer korban.
+Kapan waktu terakhir kali kedua file tersebut diakses 
+DAN apa nama kedua file tersebut? 
+(""CLUE"" : ""Target Accessed"")
+(Format Jawaban : 
+FirstFileName.pdf_mm/dd/yyyy-hour:minute:sec_SecondFileName.pdf_mm/dd/yyyy-hour:minute:sec)
+
+(3). Kapan waktu terakhir kali file Code.ps1 dibuat/created?
+(""CLUE"" : ""Target Created"")
+(Format Jawaban = mm/dd/yyyy-hour:minute:sec)
+
+(4) Apa nama aplikasi yang digunakan untuk meng-compile file Code.ps1 tersebut?
+(Format Jawaban = ********)
+
+(5) Karena kami mencurigai bahwa aplikasi yang digunakan untuk mengcompile Code.ps1 tersebut sedang aktif/berjalan disaat itu, temukan ProgramInstanceId nya dan juga nomor versi dari aplikasi nya!
+(Format Jawaban = programInstanceId-App’s Version)
+(Contoh Jawaban = 0000....................................cf4a-x.x.x.x)
+
+(6) Ada berapa kali aktivitas Code.exe yang pernah terjadi dimulai dari tanggal 7/26/2022 sampai 7/30/2022?
+(""CLUE"" = ""Anda dapat meng-total-kan jumlah string                             'None to Available' mulai dari tanggal 26 sampai 30. Mengerti gak maksudnya? hehehe"")
+(Format Jawaban : ** --> 2 Digit Angka)
+```
+
+```
+Note :
+Pastikan setiap jawaban di-validasi terlebih dahulu pada service nc.
+Flag berada pada service nc dan Flag akan diberikan jika semua pertanyaan pada validator dapat dijawab dengan sempurna.
+```
+
+Validator :
+
+``nc x.x.x.x 9090``
+
+Backup IP Address (kalau IP Address yang di atas rusak) :
+
+``nc x.x.x.x 9090``
+
+Challenge File :
+<br>..
+
+Zip Password : ..
+
+Author : Byt#9671",,,0,500,Forensic,dynamic,visible,
+32,Aliases,"Halo, namaku `Can` dan aku suka bermain game. Ayo main dengan aku, cari *hidden flag* yang kusembunyikan di profilku.
+
+Author: Can#8320",,,0,100,Misc,dynamic,visible,
+33,Welcome,"Legenda mengatakan bahwa terdapat tugu di depan lokasi tersebut yang dibangun untuk menyambut orang-orang yang datang dari luar. Bantu aku menemukan nama dari tugu tersebut.
+
+Jika yang anda temukan adalah tugu bernama Siliwangi Lima Sakti, maka jawabannya adalah:
+CTF{TuguSiliwangiLimaSakti}
+
+Sebagai informasi, terdapat 2 alias dari tugu tersebut.
+
+Author: Can#8320",,,20,100,Misc,dynamic,visible,
+35,A Collaboration,"Di saat pandemi, pemerintahan negara XYZ mencoba untuk menghibur masyarakatnya dengan menyewa sebuah perusahaan CGI untuk membuat sebuah film. Walaupun demikian, ide dari film tersebut tetap bersifat edukatif, sehingga producer dari perusahaan CGI tersebut bekerja sama dengan Badan Intelijen Negara untuk membuat sebuah film yang edukatif dan juga seru!
+
+Hint: flag berada pada /home/flag.txt
+
+Link : 
+x.x.x.x:23022
+
+Mirror 1 : 
+x.x.x.x:23022
+
+Author: Exc#1207",,,0,400,Web Exploitation,dynamic,visible,
+36,CovidMasiAdak,"Sejak tahun 2020, virus Covid menyerang. Jadi kita harus pake masker, agar tidak diserang.
+Lalu, supaya semua orang pake masker, talenta terbaik Anak Bangsa memberikan sumbangsih berupa AI skynet yang bisa mendeteksi jika ada masyarakat yang males pake masker.
+Hukumannya bila ketahuan, mereka akan diasingkan ke ke Rengasdengklok tanpa makanan.
+
+Chall: http://x.x.x.x:51515 <br>
+Mirror1: http://x.x.x.x:51515 <br>
+Source: https://x.x.x.x/
+
+Author: siahaan#9550
+",x.x.x.x,,0,500,Web Exploitation,dynamic,visible,

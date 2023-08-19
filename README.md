@@ -61,7 +61,11 @@ optional arguments:
 ```
 
 ## Info
-- Program will create copies of your file, located at `sanitized` folder
+- The output file are INTENDED for spreadsheet use, opening with excel might corrupt the file
+- Program will create a new folder named `sanitized` containing copies of your file
 - Admin data will not be displayed on data sheets
 - Team/User/Member's password will not be displayed on data sheets
-- Ignore the width exceeding
+- Output file will contain :
+  - Accumulation sheet (to calculate the total score)
+  - Sheets for each of category (scoring will be done there)
+  - Sanitized copy of user/team data, scoreboard, and challenges
