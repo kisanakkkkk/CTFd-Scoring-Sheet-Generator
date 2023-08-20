@@ -26,7 +26,7 @@ python3 generator.py -d {user_data} -s {scoreboard_data} -c {chall_data}
 
 
 ## Basic Usage
-1. Export the following files from your CTFd (https://docs.ctfd.io/docs/exports/ctfd-exports):
+1. Export the following files from your CTFd, put it in the same directory as the code (https://docs.ctfd.io/docs/exports/ctfd-exports):
    * `{CTFNAME}-users+fields.csv` (for individual-based CTF)
     
         OR
