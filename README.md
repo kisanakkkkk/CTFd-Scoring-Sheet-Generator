@@ -5,6 +5,8 @@ Automates the generation of CTFd POC (proof-of-concept) scoring sheets, complete
 
 <img width="892" alt="Screenshot 2023-08-19 234625" src="https://github.com/kisanakkkkk/CTFd-Scoring-Sheet-Generator/assets/70153248/abb87192-5834-4f78-a16b-f44d4f1618d2">
 
+<br>
+
 <img width="800" alt="Screenshot 2023-08-19 234020" src="https://github.com/kisanakkkkk/CTFd-Scoring-Sheet-Generator/assets/70153248/b26e2252-ac7c-4ed4-b872-7611f9442a73">
 
 ## Installation
