@@ -7,8 +7,7 @@ from openpyxl.styles import PatternFill, Font, Alignment
 from openpyxl.formatting.rule import CellIsRule
 from openpyxl.utils import get_column_letter
 
-#edit this
-CATEGORIES = ["Web Exploitation","Binary Exploitation","Reverse Engineering","Cryptography","Forensic","Misc"]
+CATEGORIES = []
 
 CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -172,7 +171,7 @@ def add_data(ishead, sheet, row, dataset, start_col, font=False, alignment=False
             x.alignment = alignment
 
 
-def add_to_xls(name, xls_file, classes, heads, color_sheet_range=False):
+def add_to_xls(workbook, name, xls_file, classes, heads, color_sheet_range=False):
     name = os.path.basename(name)
     heads_font = Font(name='Lato', size=12, bold=True)
     title_font = Font(name='Lato', size=20, bold=True)
@@ -182,10 +181,6 @@ def add_to_xls(name, xls_file, classes, heads, color_sheet_range=False):
     if type(heads) is not list:
         heads = vars(heads)
     
-    try:
-        workbook = openpyxl.load_workbook(xls_file)
-    except FileNotFoundError:
-        workbook = openpyxl.Workbook()
     sheet = workbook[name]
 
     start_row = 1
@@ -232,11 +227,9 @@ def add_to_xls(name, xls_file, classes, heads, color_sheet_range=False):
         sheet.column_dimensions[get_column_letter(column)].width = adjusted_width
 
 
-    workbook.save(xls_file)
-
     print(f'{name} imported to {xls_file}')
 
-def add_user(name, xls_file):
+def add_user(workbook, name, xls_file):
     classes = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='|')
@@ -256,10 +249,10 @@ def add_user(name, xls_file):
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
-    add_to_xls(name, xls_file, classes, classes[0])
+    add_to_xls(workbook, name, xls_file, classes, classes[0])
     return classes
 
-def add_team(name, xls_file):
+def add_team(workbook, name, xls_file):
     classes = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
@@ -282,10 +275,10 @@ def add_team(name, xls_file):
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
-    add_to_xls(name, xls_file, classes, classes[0])
+    add_to_xls(workbook, name, xls_file, classes, classes[0])
     return classes
 
-def add_scoreboard(name, xls_file):
+def add_scoreboard(workbook, name, xls_file):
     classes = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='|')
@@ -303,10 +296,10 @@ def add_scoreboard(name, xls_file):
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
-    add_to_xls(name, xls_file, classes, classes[0])
+    add_to_xls(workbook, name, xls_file, classes, classes[0])
     return classes
 
-def add_team_scoreboard(name, xls_file):
+def add_team_scoreboard(workbook, name, xls_file):
     classes = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
@@ -324,10 +317,11 @@ def add_team_scoreboard(name, xls_file):
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
-    add_to_xls(name, xls_file, classes, classes[0])
+    add_to_xls(workbook, name, xls_file, classes, classes[0])
     return classes
 
-def add_chall(name, xls_file):
+def add_chall(workbook, name, xls_file, files):
+    global CATEGORIES
     classes = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
@@ -343,9 +337,16 @@ def add_chall(name, xls_file):
             if index != 0:
                 classes.append(Challenge(*new))
             index+=1
+    
+    chall_category = set()
+    for cl in classes:
+        chall_category.add(cl.category)
+    
+    CATEGORIES = sorted(chall_category)
+    preparing_sheets(workbook, files)
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
-    add_to_xls(name, xls_file, classes, classes[0])
+    add_to_xls(workbook, name, xls_file, classes, classes[0])
     return classes
 
 def sanitize(files_path):
@@ -370,7 +371,7 @@ def sanitize(files_path):
         print('Error in sanitizing files', e)
         exit()
 
-def create_accumulation_sheet(xls_file, scoreboard_classes, chall_classes):
+def create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_classes):
     accumulation_classes = []
     index = 0
     sc_class = []
@@ -398,9 +399,9 @@ def create_accumulation_sheet(xls_file, scoreboard_classes, chall_classes):
             formula_category = f"=VLOOKUP($B{6+index};'{ca}'!$C$9:${CHARSET[nums[ca] + 4 - 1]}${9 + (len(accumulation_classes) - 1)};{nums[ca]+2};FALSE)"
             ac.__dict__[ca] = formula_category
         index += 1
-    add_to_xls("Accumulation", xls_file, accumulation_classes, heads)
+    add_to_xls(workbook, "Accumulation", xls_file, accumulation_classes, heads)
 
-def create_category_sheet(category_name, xls_file, scoreboard_classes, entrantclasses, chall_classes):
+def create_category_sheet(workbook, category_name, xls_file, scoreboard_classes, entrantclasses, chall_classes):
     chall_names = []
     for x in chall_classes:
         if x.category == category_name:
@@ -430,23 +431,18 @@ def create_category_sheet(category_name, xls_file, scoreboard_classes, entrantcl
     
     heads = ['Place', 'ID', 'User'] + chall_names + ['Total']
     ranges = f"D9:{CHARSET[len(chall_names) + 3]}{8 + len(sc_class)}"
-    add_to_xls(category_name, xls_file, sheet_classes, heads, ranges)
+    add_to_xls(workbook, category_name, xls_file, sheet_classes, heads, ranges)
 
-def preparing_sheets(xls_file, files):
+def preparing_sheets(workbook, files):
     pattern = re.compile("[a-z+]*.csv")
     names = [re.findall(pattern, os.path.basename(f))[0] for f in files]
     sheets = ["Accumulation"] + CATEGORIES + names
-    try:
-        workbook = openpyxl.load_workbook(xls_file)
-    except FileNotFoundError:
-        workbook = openpyxl.Workbook()
     for s in sheets:
         sheet = workbook.create_sheet(f'{s}')
 
     #delete initial sheet
     if 'Sheet' in workbook.sheetnames:
         workbook.remove(workbook['Sheet'])
-    workbook.save(xls_file)
     print('Preparation Finished')
 
 def generate(args):
@@ -460,20 +456,22 @@ def generate(args):
 
     TITLE = os.path.basename(entrantcsv).split('-')[0]
 
+    workbook = openpyxl.Workbook()
     #creating sanitized copy
     entrantcsv, scorecsv, challcsv = sanitize([entrantcsv, scorecsv, challcsv])
-    preparing_sheets(xls_file, [entrantcsv, scorecsv, challcsv])
 
+    chall_classes = add_chall(workbook, challcsv, xls_file, [entrantcsv, scorecsv, challcsv])
     if isTeam:
-        entrantclasses = add_team(entrantcsv, xls_file)
-        scoreboard_classes = add_team_scoreboard(scorecsv, xls_file)
+        entrantclasses = add_team(workbook, entrantcsv, xls_file)
+        scoreboard_classes = add_team_scoreboard(workbook, scorecsv, xls_file)
     else:
-        entrantclasses = add_user(entrantcsv, xls_file)
-        scoreboard_classes = add_scoreboard(scorecsv, xls_file)
-    chall_classes = add_chall(challcsv, xls_file)
-    create_accumulation_sheet(xls_file, scoreboard_classes, chall_classes)
+        entrantclasses = add_user(workbook, entrantcsv, xls_file)
+        scoreboard_classes = add_scoreboard(workbook, scorecsv, xls_file)
+    create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_classes)
     for category in CATEGORIES:
-        create_category_sheet(category, xls_file, scoreboard_classes, entrantclasses, chall_classes)
+        create_category_sheet(workbook, category, xls_file, scoreboard_classes, entrantclasses, chall_classes)
+    
+    workbook.save(xls_file)
 
 def main():
     parser = argparse.ArgumentParser()
