@@ -67,8 +67,6 @@ optional arguments:
 ## Info
 - The output file are INTENDED for spreadsheet use, opening with excel might corrupt the formula
 - Program will create a new folder named `sanitized` containing copies of your file
-- Admin data will not be displayed on data sheets
-- Team/User/Member's password will not be displayed on data sheets
 - Output file will contain :
   - Accumulation sheet (to calculate the total score)
   - Sheets for each of category (scoring will be done there)
