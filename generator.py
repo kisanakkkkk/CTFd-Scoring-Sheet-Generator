@@ -21,84 +21,49 @@ CELL_COLOR = {
 TITLE = ""
 
 class User:
-    def __init__(self, id,oauth_id,name,email,type,secret,website,affiliation,country,bracket,hidden,banned,verified,team_id,created):
-        self.id = id
-        self.oauth_id = oauth_id
-        self.name = name
-        self.email = email
-        self.type = type
-        self.secret = secret
-        self.website = website
-        self.affiliation = affiliation
-        self.country = country
-        self.bracket = bracket
-        self.hidden = hidden
-        self.banned = banned
-        self.verified = verified
-        self.team_id = team_id
-        self.created = created
+    def __init__(self, variables):
+        for item in variables:
+            setattr(self, item, None)
+    
+    def setData(self, data_list):
+        for name, value in zip(self.__dict__, data_list):
+            setattr(self, name, value)
 
 class Team:
-    def __init__(self, id,oauth_id,name,email,secret,website,affiliation,country,bracket,hidden,banned,captain_id,created,member_id,member_oauth_id,member_name,member_email,member_type,member_secret,member_website,member_affiliation,member_country,member_bracket,member_hidden,member_banned,member_verified,member_team_id,member_created):
-        self.id = id
-        self.oauth_id = oauth_id
-        self.name = name
-        self.email = email
-        self.secret = secret
-        self.website = website
-        self.affiliation = affiliation
-        self.country = country
-        self.bracket = bracket
-        self.hidden = hidden
-        self.banned = banned
-        self.captain_id = captain_id
-        self.created = created
-        self.member_id = member_id
-        self.member_oauth_id = member_oauth_id
-        self.member_name = member_name
-        self.member_email = member_email
-        self.member_type = member_type
-        self.member_secret = member_secret
-        self.member_website = member_website
-        self.member_affiliation = member_affiliation
-        self.member_country = member_country
-        self.member_bracket = member_bracket
-        self.member_hidden = member_hidden
-        self.member_banned = member_banned
-        self.member_verified = member_verified
-        self.member_team_id = member_team_id
-        self.member_created = member_created
+    def __init__(self, variables):
+        for item in variables:
+            setattr(self, item, None)
+    
+    def setData(self, data_list):
+        for name, value in zip(self.__dict__, data_list):
+            setattr(self, name, value)
 
 class Scoreboard:
-    def __init__(self, place, user, score):
-        self.place = place
-        self.user = user
-        self.score = score
+    def __init__(self, variables):
+        for item in variables:
+            setattr(self, item, None)
+    
+    def setData(self, data_list):
+        for name, value in zip(self.__dict__, data_list):
+            setattr(self, name, value)
 
 class TeamScoreboard:
-    def __init__(self, place,user,team_id,score,member_name,member_id,member_email,member_score):
-       self.place = place
-       self.user = user
-       self.team_id = team_id
-       self.score = score
-       self.member_name = member_name
-       self.member_id = member_id
-       self.member_email = member_email
-       self.member_score  = member_score 
+    def __init__(self, variables):
+        for item in variables:
+            setattr(self, item, None)
+    
+    def setData(self, data_list):
+        for name, value in zip(self.__dict__, data_list):
+            setattr(self, name, value)
 
 class Challenge:
-    def __init__(self, id,name,description,connection_info,next_id,max_attempts,value,category,type,state,requirements):
-        self.id = id
-        self.name = name
-        self.description = description
-        self.connection_info = connection_info
-        self.next_id = next_id
-        self.max_attempts = max_attempts
-        self.value = value
-        self.category = category
-        self.type = type
-        self.state = state
-        self.requirements = requirements
+    def __init__(self, variables):
+        for item in variables:
+            setattr(self, item, None)
+    
+    def setData(self, data_list):
+        for name, value in zip(self.__dict__, data_list):
+            setattr(self, name, value)
 
 class Sheet:
     def __init__(self, place, userid, name, challs, total):
@@ -231,10 +196,12 @@ def add_to_xls(workbook, name, xls_file, classes, heads, color_sheet_range=False
 
 def add_user(workbook, name, xls_file):
     classes = []
+    colnames = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='|')
         index = 0
         for x in csv_reader:
+            newclass = None
             new = []
             for j in x:
                 n = j.replace('"', '')
@@ -242,10 +209,12 @@ def add_user(workbook, name, xls_file):
                     new.append(int(n))
                 except ValueError:
                     new.append(n)
-            if index != 0:
-                del new[3:5]#delete password values
-                if new[4] != 'admin':
-                    classes.append(User(*new))
+            if index == 0:
+                colnames = new
+            else:
+                newclass = User(colnames)
+                newclass.setData(new)
+                classes.append(newclass)
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
@@ -254,10 +223,12 @@ def add_user(workbook, name, xls_file):
 
 def add_team(workbook, name, xls_file):
     classes = []
+    colnames = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
         index = 0
         for x in csv_reader:
+            newclass = None
             new = []
             for j in x:
                 n = j
@@ -265,13 +236,12 @@ def add_team(workbook, name, xls_file):
                     new.append(int(n))
                 except ValueError:
                     new.append(n)
-            if len(new) == 14:
-                new = new + [''] * 16
-            del new[4]
-            del new[16]
-            if index != 0:
-                if new[17] != "admin":
-                    classes.append(Team(*new))
+            if index == 0:
+                colnames = new
+            else:
+                newclass = Team(colnames)
+                newclass.setData(new)
+                classes.append(newclass)
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
@@ -280,10 +250,12 @@ def add_team(workbook, name, xls_file):
 
 def add_scoreboard(workbook, name, xls_file):
     classes = []
+    colnames = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='|')
         index = 0
         for x in csv_reader:
+            newclass = None
             new = []
             for j in x:
                 n = j.replace(';;', '')
@@ -291,8 +263,12 @@ def add_scoreboard(workbook, name, xls_file):
                     new.append(int(n))
                 except ValueError:
                     new.append(n)
-            if index != 0:
-                classes.append(Scoreboard(*new))
+            if index == 0:
+                colnames = new
+            else:
+                newclass = Scoreboard(colnames)
+                newclass.setData(new)
+                classes.append(newclass)
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
@@ -301,10 +277,12 @@ def add_scoreboard(workbook, name, xls_file):
 
 def add_team_scoreboard(workbook, name, xls_file):
     classes = []
+    colnames = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
         index = 0
         for x in csv_reader:
+            newclass = None
             new = []
             for j in x:
                 n = j
@@ -312,8 +290,12 @@ def add_team_scoreboard(workbook, name, xls_file):
                     new.append(int(n))
                 except ValueError:
                     new.append(n)
-            if index != 0:
-                classes.append(TeamScoreboard(*new))
+            if index == 0:
+                colnames = new
+            else:
+                newclass = TeamScoreboard(colnames)
+                newclass.setData(new)
+                classes.append(newclass)
             index+=1
     pattern = re.compile("[a-z+]*.csv")
     name = re.findall(pattern, os.path.basename(name))[0]
@@ -323,10 +305,12 @@ def add_team_scoreboard(workbook, name, xls_file):
 def add_chall(workbook, name, xls_file, files):
     global CATEGORIES
     classes = []
+    colnames = []
     with open(name, 'r', encoding="iso-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
         index = 0
         for x in csv_reader:
+            newclass = None
             new = []
             for j in x:
                 n = j.replace(';;', '')
@@ -334,8 +318,12 @@ def add_chall(workbook, name, xls_file, files):
                     new.append(int(n))
                 except ValueError:
                     new.append(n)
-            if index != 0:
-                classes.append(Challenge(*new))
+            if index == 0:
+                colnames = new
+            else:
+                newclass = Challenge(colnames)
+                newclass.setData(new)
+                classes.append(newclass)
             index+=1
     
     chall_category = set()
@@ -371,7 +359,7 @@ def sanitize(files_path):
         print('Error in sanitizing files', e)
         exit()
 
-def create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_classes):
+def create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_classes, isTeam):
     accumulation_classes = []
     index = 0
     sc_class = []
@@ -380,9 +368,16 @@ def create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_clas
             sc_class.append(sc)
 
     for c in sc_class:
+        place = c.place
+        score = c.score
+        user = None
+        if isTeam:
+            user = c.team
+        else:
+            user = c.user
         formula_final = f"=SUM(D{6+index}:{CHARSET[3 + len(CATEGORIES) - 1]}{6+index})"
         formula_scorechange = f"=NOT(C{6+index}={CHARSET[3 + len(CATEGORIES) - 1 + 1]}{6+index})"
-        accumulation_classes.append(Accum(c.place, c.user, c.score, CATEGORIES, formula_final, formula_scorechange))
+        accumulation_classes.append(Accum(place, user, score, CATEGORIES, formula_final, formula_scorechange))
         index+=1
     heads = ["Place","User","CTFd Score"] + CATEGORIES + ["Final Score", "Score Change?"]
 
@@ -401,7 +396,7 @@ def create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_clas
         index += 1
     add_to_xls(workbook, "Accumulation", xls_file, accumulation_classes, heads)
 
-def create_category_sheet(workbook, category_name, xls_file, scoreboard_classes, entrantclasses, chall_classes):
+def create_category_sheet(workbook, category_name, xls_file, scoreboard_classes, entrantclasses, chall_classes, isTeam):
     chall_names = []
     for x in chall_classes:
         if x.category == category_name:
@@ -416,10 +411,16 @@ def create_category_sheet(workbook, category_name, xls_file, scoreboard_classes,
 
     for sc in sc_class:
         for us in entrantclasses:
-            if sc.user == us.name:
+            user = None
+            if isTeam:
+                user = sc.team
+            else:
+                user = sc.user
+            place = sc.place
+            if user == us.name:
                 id = us.id
                 formula_total = f'=SUMPRODUCT($D${str(9 + len(sc_class))}:${chr(ord("D") + len(chall_names) - 1)}${str(9 + len(sc_class))}, MMULT({{1,0.5,0,0}},--(D{str(9+index)}:{chr(ord("D") + len(chall_names) - 1)}{str(9+index)}={{"OK";"D";"X";"P"}})))'
-                sheet_classes.append(Sheet(sc.place, id, sc.user, chall_names, formula_total))
+                sheet_classes.append(Sheet(place, id, user, chall_names, formula_total))
                 index+=1
     
     scores = Sheet(None, None, None, chall_names, None)
@@ -467,9 +468,9 @@ def generate(args):
     else:
         entrantclasses = add_user(workbook, entrantcsv, xls_file)
         scoreboard_classes = add_scoreboard(workbook, scorecsv, xls_file)
-    create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_classes)
+    create_accumulation_sheet(workbook, xls_file, scoreboard_classes, chall_classes, isTeam)
     for category in CATEGORIES:
-        create_category_sheet(workbook, category, xls_file, scoreboard_classes, entrantclasses, chall_classes)
+        create_category_sheet(workbook, category, xls_file, scoreboard_classes, entrantclasses, chall_classes, isTeam)
     
     workbook.save(xls_file)
 
