@@ -452,10 +452,12 @@ def generate(args):
     entrantcsv = args.data
     scorecsv = args.score
     challcsv = args.chall
-    xls_file = args.output
     isTeam = args.team
 
     TITLE = os.path.basename(entrantcsv).split('-')[0]
+    xls_file = TITLE + "-scoringsheet.xlsx"
+    if args.output:
+        xls_file = args.output
 
     workbook = openpyxl.Workbook()
     #creating sanitized copy
@@ -480,7 +482,7 @@ def main():
     parser.add_argument('-d', '--data', type=str, required=True, help='specify user/team data CSV file')
     parser.add_argument('-s', '--score', type=str, required=True, help='specify scoreboard CSV file')
     parser.add_argument('-c', '--chall', type=str, required=True, help='specify challenges CSV file')
-    parser.add_argument('-o', '--output', type=str, help='set output file (default: output.xlsx)', default='output.xlsx')
+    parser.add_argument('-o', '--output', type=str, help='set output file (default: output.xlsx)')
     parser.add_argument('-t', '--team', action='store_true', help='indicates that the CTF is team-based (default: individual-based)')
 
     args = parser.parse_args()
